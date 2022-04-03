@@ -52,6 +52,16 @@ Se muestra así:
 
 ![image-20220403174152212](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220403174152212.png)
 
+### Ver tamaño del contenedor
+
+Una vez he agregado estos dos archivos, visualizo el tamaño actual de mi contenedor. Para ello utilizo el siguiente comando:
+
+```shell
+sudo docker ps -s
+```
+
+![image-20220403181903396](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220403181903396.png)
+
 ### Borrar contenedor
 
 Antes de borrar el contenedor debo detenerlo, ya que Docker no permite eliminar contenedores que se encuentran en ejecución. Para detener el contenedor "web" utilizo el siguiente comando:
