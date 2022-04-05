@@ -89,3 +89,100 @@ sudo docker ps
 ![image-20220403174529246](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220403174529246.png)
 
 Como se puede apreciar, ya no existe dicho contenedor.
+
+## Servidor de base de datos
+
+### Iniciar contenedor
+
+Para iniciar un contenedor desde la imagen "mariadb", con nombre "bbdd", contraseña de root "root", con nombre de base de datos por defecto "prueba" y con creación de un nuevo usuario "invitado" que utilice la contraseña "invitado" ejecuto el siguiente comando:
+
+```shell
+$ sudo docker run --detach --name mariadb --env MARIADB_DATABASE=prueba --env MARIADB_USER=invitado --env MARIADB_PASSWORD=invitado --env MARIADB_ROOT_PASSWORD=root  mariadb:latest
+```
+
+![image-20220405201951820](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405201951820.png)
+
+El comando anterior contiene las distintas variables de entorno para establecer la configuración que se requiere en esta tarea:
+
+- `MARIADB_DATABASE`: nombre de la base de datos por defecto.
+- `MARIADB_USER`: nombre del usuario por defecto para la base de datos.
+- `MARIADB_PASSWORD`: contraseña para el usuario por defecto.
+- `MARIADB_ROOT_PASSWORD`: contraseña para el usuario "root".
+
+### Conexión al servidor
+
+Para conectarme al servidor de bases de datos desde el exterior del contenedor docker, necesito obtener primero la IP de dicho contenedor. Lo hago a través del siguiente comando:
+
+```shell
+sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mariadb
+```
+
+![image-20220405203025323](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405203025323.png)
+
+Tras averiguar la IP utilizo el siguiente comando para conectarme al servidor de bases de datos:
+
+```shell
+mariadb -h 172.17.0.2 -u invitado -p
+```
+
+![image-20220405203322962](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405203322962.png)
+
+Para poder realizar la conexión, previamente he instalado el cliente de MariaDB en mi host Linux. El nombre del paquete es `mariadb-client-core-10.3`.
+
+A continuación muestro conexión completa al servidor de bases de datos, utilizando la sentencia `SHOW DATABASES;` en MariaDB.
+
+![image-20220405204048656](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405204048656.png)
+
+### Intentando borrar imagen "mariadb" mientras el contenedor "mariadb" está creado
+
+Para intentar eliminar la imagen "mariadb" (con una instancia de dicha imagen levantada) utilizo el siguiente comando:
+
+```shell
+sudo docker rm "mariadb"
+```
+
+![image-20220405204934200](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405204934200.png)
+
+Docker no me permite borrar esta imagen ya que existe un contenedor en ejecución que la utiliza. Me pide detener el contenedor antes de intentar eliminarla de nuevo.
+
+## Otros
+
+### Listar imágenes
+
+Para listar las imágenes que tengo en mi registro local, ejecuto el siguiente comando:
+
+```shell
+sudo docker image ls
+```
+
+![image-20220405204426924](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405204426924.png)
+
+### Borrar contenedores
+
+Si bien el contenedor del servidor web ya ha sido eliminado (a requerimiento del enunciado de la tarea) incluyo este apartado genérico que también se solicita. En este caso, borro únicamente el contenedor "mariadb", que es el único que queda (el proceso de borrado del contenedor "web" ya se ha detallado previamente en su apartado correspondiente).
+
+Antes de borrar el contenedor "mariadb", primero debo detenerlo:
+
+```shell
+sudo docker stop mariadb
+```
+
+![image-20220405205323551](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405205323551.png)
+
+Posteriormente, ejecuto el siguiente comando para eliminarlo:
+
+```shell
+sudo docker rm mariadb
+```
+
+![image-20220405205407042](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405205407042.png)
+
+Contenedor borrado. Ejecuto el siguiente comando, que lista los contenedores existentes en mi sistema, para asegurarme:
+
+```shell
+sudo docker ps
+```
+
+![image-20220405205453865](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405205453865.png)
+
+Como puede apreciarse, no existen contenedores.
