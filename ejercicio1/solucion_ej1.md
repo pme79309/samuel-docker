@@ -14,7 +14,7 @@ Para ello ejecuto el siguiente comando:
 sudo docker pull php:7.4-apache
 ```
 
-![image-20220403164035591](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220403164035591.png)
+![image-20220403164035591](solucion_ej1.assets/image-20220403164035591-16491874358792.png)
 
 ### Crear contenedor
 
@@ -24,7 +24,7 @@ A continuación debo crear el contenedor. En el enunciado de la tarea se especif
 sudo docker run -d -p 8000:80 -it --name web -v "$(pwd)"/src:/var/www/html php:7.4-apache
 ```
 
-![image-20220403173318059](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220403173318059.png)
+![image-20220403173318059](solucion_ej1.assets/image-20220403173318059-16491874612935.png)
 
 ### Insertar index.html
 
@@ -38,7 +38,7 @@ El código que inserto en ese archivo es el siguiente:
 
 Si ahora acceso al navegador a través de "http://localhost:8000" ya puedo ver mi index.html funcionando sin problema:
 
-![image-20220403173518181](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220403173518181.png)
+![image-20220403173518181](solucion_ej1.assets/image-20220403173518181-16491874777188.png)
 
 ### Insertar mes.php
 
@@ -50,7 +50,7 @@ A continuación procedo a insertar un archivo "mes.php" que me muestre el mes de
 
 Se muestra así:
 
-![image-20220403174152212](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220403174152212.png)
+![image-20220403174152212](solucion_ej1.assets/image-20220403174152212-164918749034611.png)
 
 ### Ver tamaño del contenedor
 
@@ -60,7 +60,7 @@ Una vez he agregado estos dos archivos, visualizo el tamaño actual de mi conten
 sudo docker ps -s
 ```
 
-![image-20220403181903396](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220403181903396.png)
+![image-20220403181903396](solucion_ej1.assets/image-20220403181903396-164918750071814.png)
 
 ### Borrar contenedor
 
@@ -70,7 +70,7 @@ Antes de borrar el contenedor debo detenerlo, ya que Docker no permite eliminar 
 sudo docker stop web
 ```
 
-![image-20220403174319399](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220403174319399.png)
+![image-20220403174319399](solucion_ej1.assets/image-20220403174319399-164918751793017.png)
 
 Finalmente, utilizo este otro comando para eliminar el contenedor:
 
@@ -78,7 +78,7 @@ Finalmente, utilizo este otro comando para eliminar el contenedor:
 sudo docker rm web
 ```
 
-![image-20220403174401816](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220403174401816.png)
+![image-20220403174401816](solucion_ej1.assets/image-20220403174401816.png)
 
 Para confirmar que he borrado el contenedor correctamente, ejecuto el siguiente comando, que me lista todos los contenedores que tengo en el sistema:
 
@@ -86,7 +86,7 @@ Para confirmar que he borrado el contenedor correctamente, ejecuto el siguiente 
 sudo docker ps
 ```
 
-![image-20220403174529246](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220403174529246.png)
+![image-20220403174529246](solucion_ej1.assets/image-20220403174529246.png)
 
 Como se puede apreciar, ya no existe dicho contenedor.
 
@@ -100,7 +100,7 @@ Para iniciar un contenedor desde la imagen "mariadb", con nombre "bbdd", contras
 $ sudo docker run --detach --name mariadb --env MARIADB_DATABASE=prueba --env MARIADB_USER=invitado --env MARIADB_PASSWORD=invitado --env MARIADB_ROOT_PASSWORD=root  mariadb:latest
 ```
 
-![image-20220405201951820](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405201951820.png)
+![image-20220405201951820](solucion_ej1.assets/image-20220405201951820.png)
 
 El comando anterior contiene las distintas variables de entorno para establecer la configuración que se requiere en esta tarea:
 
@@ -117,7 +117,7 @@ Para conectarme al servidor de bases de datos desde el exterior del contenedor d
 sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mariadb
 ```
 
-![image-20220405203025323](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405203025323.png)
+![image-20220405203025323](solucion_ej1.assets/image-20220405203025323.png)
 
 Tras averiguar la IP utilizo el siguiente comando para conectarme al servidor de bases de datos:
 
@@ -125,13 +125,13 @@ Tras averiguar la IP utilizo el siguiente comando para conectarme al servidor de
 mariadb -h 172.17.0.2 -u invitado -p
 ```
 
-![image-20220405203322962](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405203322962.png)
+![image-20220405203322962](solucion_ej1.assets/image-20220405203322962.png)
 
 Para poder realizar la conexión, previamente he instalado el cliente de MariaDB en mi host Linux. El nombre del paquete es `mariadb-client-core-10.3`.
 
 A continuación muestro conexión completa al servidor de bases de datos, utilizando la sentencia `SHOW DATABASES;` en MariaDB.
 
-![image-20220405204048656](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405204048656.png)
+![image-20220405204048656](solucion_ej1.assets/image-20220405204048656.png)
 
 ### Intentando borrar imagen "mariadb" mientras el contenedor "mariadb" está creado
 
@@ -141,7 +141,7 @@ Para intentar eliminar la imagen "mariadb" (con una instancia de dicha imagen le
 sudo docker rm "mariadb"
 ```
 
-![image-20220405204934200](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405204934200.png)
+![image-20220405204934200](solucion_ej1.assets/image-20220405204934200.png)
 
 Docker no me permite borrar esta imagen ya que existe un contenedor en ejecución que la utiliza. Me pide detener el contenedor antes de intentar eliminarla de nuevo.
 
@@ -155,7 +155,7 @@ Para listar las imágenes que tengo en mi registro local, ejecuto el siguiente c
 sudo docker image ls
 ```
 
-![image-20220405204426924](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405204426924.png)
+![image-20220405204426924](solucion_ej1.assets/image-20220405204426924.png)
 
 ### Borrar contenedores
 
@@ -167,7 +167,7 @@ Antes de borrar el contenedor "mariadb", primero debo detenerlo:
 sudo docker stop mariadb
 ```
 
-![image-20220405205323551](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405205323551.png)
+![image-20220405205323551](solucion_ej1.assets/image-20220405205323551.png)
 
 Posteriormente, ejecuto el siguiente comando para eliminarlo:
 
@@ -175,7 +175,7 @@ Posteriormente, ejecuto el siguiente comando para eliminarlo:
 sudo docker rm mariadb
 ```
 
-![image-20220405205407042](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405205407042.png)
+![image-20220405205407042](solucion_ej1.assets/image-20220405205407042.png)
 
 Contenedor borrado. Ejecuto el siguiente comando, que lista los contenedores existentes en mi sistema, para asegurarme:
 
@@ -183,6 +183,6 @@ Contenedor borrado. Ejecuto el siguiente comando, que lista los contenedores exi
 sudo docker ps
 ```
 
-![image-20220405205453865](C:\Users\Samuel\AppData\Roaming\Typora\typora-user-images\image-20220405205453865.png)
+![image-20220405205453865](solucion_ej1.assets/image-20220405205453865.png)
 
 Como puede apreciarse, no existen contenedores.
