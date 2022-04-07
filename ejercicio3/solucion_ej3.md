@@ -37,3 +37,13 @@ sudo docker run -p 8080:8080 --name adminer -e ADMINER_DEFAULT_SERVER=mariadb --
 ```
 
 ![image-20220407202241858](solucion_ej3.assets/image-20220407202241858.png)
+
+### Accediendo a la base de datos desde el navegador
+
+Para acceder a la base de datos "prueba" acudo al navegador, y accedo a la URL "http://localhost:8080", que se corresponde con el servidor del contenedor independiente a la base de datos (servidor web):
+
+![image-20220407205823388](solucion_ej3.assets/image-20220407205823388.png)
+
+Al pulsar sobre "Login" veo lo siguiente:
+
+![image-20220407205850224](solucion_ej3.assets/image-20220407205850224.png)
