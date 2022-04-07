@@ -47,3 +47,25 @@ Para acceder a la base de datos "prueba" acudo al navegador, y accedo a la URL "
 Al pulsar sobre "Login" veo lo siguiente:
 
 ![image-20220407205850224](solucion_ej3.assets/image-20220407205850224.png)
+
+### Creando nueva base de datos
+
+Para crear una nueva base de datos debo antes iniciar sesión como "root" sin especificar ninguna base de datos en el login:
+
+![image-20220407210821071](solucion_ej3.assets/image-20220407210821071.png)
+
+Pulso en "Login" y la interfaz me muestra un listado de las bases de datos existentes. Creo una nueva desde el enlace "Crear Base de datos":
+
+![image-20220407210908048](solucion_ej3.assets/image-20220407210908048.png)
+
+Al pulsar sobre dicho enlace veo la siguiente pantalla, en la que introduzco un nombre para la nueva base de datos y una codificación de caracteres:
+
+![image-20220407211009136](solucion_ej3.assets/image-20220407211009136.png)
+
+Pulso en "Guardar" y me muestra un mensaje en el que se indica que se ha creado la base de datos correctamente:
+
+![image-20220407211045928](solucion_ej3.assets/image-20220407211045928.png)
+
+Para asegurarme vuelvo al listado de bases de datos, y efectivamente la veo creada junto al resto:
+
+![image-20220407211128014](solucion_ej3.assets/image-20220407211128014.png)
