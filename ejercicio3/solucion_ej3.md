@@ -97,3 +97,13 @@ SHOW DATABASES;
 ![image-20220408160905213](solucion_ej3.assets/image-20220408160905213.png)
 
 Se puede apreciar como la nueva base de datos creada, "prueba2", se encuentra en el listado.
+
+### Listando contenedores en ejecución
+
+Para listar los contenedores que se encuentran en ejecución en este momento, utilizo el siguiente comando:
+
+```shell
+sudo docker ps
+```
+
+![image-20220408161706771](solucion_ej3.assets/image-20220408161706771.png)
