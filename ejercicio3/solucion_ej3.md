@@ -69,3 +69,31 @@ Pulso en "Guardar" y me muestra un mensaje en el que se indica que se ha creado 
 Para asegurarme vuelvo al listado de bases de datos, y efectivamente la veo creada junto al resto:
 
 ![image-20220407211128014](solucion_ej3.assets/image-20220407211128014.png)
+
+### Listando bases de datos con SQL
+
+Para listar las bases de datos y comprobar que la nueva base de datos, "prueba2", se ha creado correctamente, debo entrar primero al contenedor "mariadb" en modo "bash". Para ello utilizo el siguiente comando:
+
+```shell
+sudo docker exec -it mariadb bash
+```
+
+![image-20220408160408543](solucion_ej3.assets/image-20220408160408543.png)
+
+Una vez dentro del contenedor, introduzco el siguiente comando en la consola para acceder como usuario "root" a MariaDB:
+
+```shell
+mariadb -u root -p
+```
+
+![image-20220408160635480](solucion_ej3.assets/image-20220408160635480.png)
+
+Me ha solicitado contraseña del usuario "root" y, tras introducirla, entro sin problema. Ahora ejecuto la siguiente sentencia SQL para listar todas las bases de datos existentes:
+
+```sql
+SHOW DATABASES;
+```
+
+![image-20220408160905213](solucion_ej3.assets/image-20220408160905213.png)
+
+Se puede apreciar como la nueva base de datos creada, "prueba2", se encuentra en el listado.
