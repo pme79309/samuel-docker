@@ -107,3 +107,63 @@ sudo docker ps
 ```
 
 ![image-20220408161706771](solucion_ej3.assets/image-20220408161706771.png)
+
+### Borrando contenedores, red y volúmenes utilizados
+
+Para borrar los contenedores, primero debo pararlos. Para ello utilizo el siguiente comando:
+
+```shell
+sudo docker stop mariadb adminer
+```
+
+Después, para eliminarlos, utilizo este otro comando:
+
+```shell
+sudo docker rm mariadb adminer
+```
+
+![image-20220408162106013](solucion_ej3.assets/image-20220408162106013.png)
+
+Listo los contenedores, para ver si se han borrado correctamente:
+
+```shell
+sudo docker ps
+```
+
+![image-20220408162133800](solucion_ej3.assets/image-20220408162133800.png)
+
+Efectivamente, contenedores borrados.
+
+Para borrar la red "redbd" utilizo el siguiente comando:
+
+```shell
+sudo docker network rm redbd
+```
+
+![image-20220408162312663](solucion_ej3.assets/image-20220408162312663.png)
+
+Listo las redes con este comando, para confirmar que la red "redbd" ya no existe:
+
+```shell
+sudo docker network ls
+```
+
+![image-20220408162355185](solucion_ej3.assets/image-20220408162355185.png)
+
+Para borrar el volumen creado para el contenedor "mariadb" utilizo el siguiente comando, con el que solicito borrar todos aquellos volúmenes que no se estén utilizando actualmente. Agrego `--force` para que no me pida confirmación: 
+
+```shell
+sudo docker volume prune --force
+```
+
+![image-20220408162648570](solucion_ej3.assets/image-20220408162648570.png)
+
+Tenía, como se puede apreciar, más volúmenes creados que no se estaban utilizando. Ahora listo, con el siguiente comando, los volúmenes existentes:
+
+```shell
+sudo docker volume ls
+```
+
+![image-20220408162738574](solucion_ej3.assets/image-20220408162738574.png)
+
+Ya no estaba utilizando ninguno, por lo que Docker los ha eliminado todos y actualmente no tengo volúmenes. Todo correcto.
