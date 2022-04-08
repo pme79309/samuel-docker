@@ -52,3 +52,43 @@ sudo docker run -d -p 8080:80 -it --name blogueroastur blogueroastur:1
 Voy al navegador y entro en "http://localhost:8080" para comprobar si la página web se visualiza correctamente:
 
 ![image-20220408174313061](solucion_ej4.assets/image-20220408174313061.png)
+
+### Subir imagen creada a un repositorio en Docker Hub
+
+Tras crear mi cuenta en Docker Hub, debo iniciar sesión desde la terminal, para posteriormente poder subir la imagen. Para iniciar sesión utilizo el siguiente comando:
+
+```shell
+sudo docker login
+```
+
+![image-20220408180015119](solucion_ej4.assets/image-20220408180015119.png)
+
+
+
+
+
+
+
+
+
+Utilizo el siguiente comando para relacionar la imagen de mi repositorio local con el repositorio remoto "blogueroastur" creado previamente desde la web Docker Hub:
+
+```shell
+sudo docker tag blogueroastur:1 pme79309/blogueroastur:1
+```
+
+![image-20220408175545102](solucion_ej4.assets/image-20220408175545102.png)
+
+A continuación, subo esta imagen a Docker Hub con el siguiente comando:
+
+```shell
+sudo docker push pme79309/blogueroastur:1
+```
+
+![image-20220408180132247](solucion_ej4.assets/image-20220408180132247.png)
+
+A continuación accedo al sitio web de Docker Hub para verificar que mi imagen ya se ha subido al repositorio "blogueroastur":
+
+![image-20220408180257800](solucion_ej4.assets/image-20220408180257800.png)
+
+Efectivamente, la imagen se encuentra ya en el repositorio remoto de Docker Hub llamado "blogueroastur".
